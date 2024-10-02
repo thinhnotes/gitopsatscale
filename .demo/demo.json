@@ -1,0 +1,74 @@
+{
+    "title": "Install the Argo CD",
+    "description": "This is install the Argo CD to kind environment",
+    "demos": [
+        {
+            "title": "Check Docker",
+            "description": "Check docker is runing?",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "docker ps"
+                }
+            ]
+        },
+        {
+            "title": "Create Minikube",
+            "description": "Create Minikube Environment",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "minikube start"
+                }
+            ]
+        },
+        {
+            "title": "Install Argo CD",
+            "description": "Install Argo CD to Environment",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl create namespace argocd"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl get pods -n argocd"
+                }
+            ]
+        },
+        {
+            "title": "Forward port to connect via web",
+            "description": "Forward port to connect via web (if you are using on the github workspaces it need change protocal to https)",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl port-forward svc/argocd-server -n argocd 8080:443"
+                }
+            ]
+        },
+        {
+            "title": "Get password login via web",
+            "description": "Get password stored on the argocd-initial-admin-secret",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl get secrets/argocd-initial-admin-secret --template={{.data.password}} | base64 -d"
+                }
+            ]
+        },
+        {
+            "title": "Stop Minikube",
+            "description": "Stop Minikube Environment",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "minikube stop"
+                }
+            ]
+        }
+    ]
+}

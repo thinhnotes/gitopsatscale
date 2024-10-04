@@ -16,8 +16,26 @@ spec:
           project: default
           source:
             repoURL: "https://github.com/thinhnotes/gitopsatscale.git"
+            # This will use the commit SHA of the pull request
             targetRevision: "{{generator.git.revision}}"
             path: "{{generator.git.path}}/{{path}}"
           destination:
             server: "https://kubernetes.default.svc"
             namespace: "your-namespace"
+  - pullRequest:
+      repoURL: "https://github.com/thinhnotes/gitopsatscale.git"
+      # Specify the base branch
+      baseBranch: "main"
+      template:
+        metadata:
+          name: "{{path}}-{{pullRequest.number}}"
+        spec:
+          project: default
+          source:
+            repoURL: "https://github.com/thinhnotes/gitopsatscale.git"
+            # This will use the commit SHA of the pull request
+            targetRevision: "{{pullRequest.headCommit.sha}}"
+            path: "application-sets/example-apps/{{path}}"
+          destination:
+            server: "https://kubernetes.default.svc"
+            namespace: "myapp"

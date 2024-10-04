@@ -1,0 +1,6 @@
+Application: myapp
+Project Name: Default
+Sync Policy: Manual
+Repo: https://github.com/thinhnotes/gitopsatscale
+Path: ./app-of-apps/my-app-list/my-app
+Destination: https://kubernetes.default.svc

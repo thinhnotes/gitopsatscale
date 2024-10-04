@@ -45,7 +45,8 @@
             "description": "Forward port to connect via web (if you are using on the github workspaces it need change protocal to https)",
             "steps": [
                 {
-                    "action": "executeTerminalCommand",
+                    "action": "open",
+                    "path": ".demo/forwardport.txt",
                     "command": "kubectl port-forward svc/argocd-server -n argocd 8080:443"
                 }
             ]
@@ -56,7 +57,7 @@
             "steps": [
                 {
                     "action": "executeTerminalCommand",
-                    "command": "kubectl get secrets/argocd-initial-admin-secret --template={{.data.password}} | base64 -d"
+                    "command": "kubectl get secrets/argocd-initial-admin-secret -n argocd --template={{.data.password}} | base64 -d"
                 }
             ]
         },

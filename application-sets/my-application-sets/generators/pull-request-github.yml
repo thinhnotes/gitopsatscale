@@ -1,27 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: pull-request-appset
-  namespace: argocd
+  name: myapp
 spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
   - pullRequest:
-      repoURL: "https://github.com/thinhnotes/gitopsatscale.git"
-      # Specify the base branch
-      baseBranch: "main"
-      template:
-        metadata:
-          name: "{{path}}-{{pullRequest.number}}"
-        spec:
-          project: default
-          source:
-            repoURL: "https://github.com/thinhnotes/gitopsatscale.git"
-            # This will use the commit SHA of the pull request
-            targetRevision: "{{pullRequest.headCommit.sha}}"
-            path: "application-sets/example-apps/{{path}}"
-          destination:
-            server: "https://kubernetes.default.svc"
-            namespace: "myapp"
+      github:
+        # The GitHub organization or user.
+        owner: thinhnotes
+        # The Github repository
+        repo: gitopsatscale
+        labels:
+        - preview
   template:
     metadata:
       name: 'myapp-{{ .branch }}-{{ .number }}'
@@ -29,9 +21,13 @@ spec:
         key1: '{{ index .labels 0 }}'
     spec:
       source:
-        repoURL: https://github.com/thinhnotes/gitopsatscale
-        targetRevision: HEAD
-        path: ./app-of-apps/manifests/backend
+        repoURL: 'https://github.com/myorg/myrepo.git'
+        targetRevision: '{{ .head_sha }}'
+        path: helm-guestbook
+        helm:
+          parameters:
+          - name: "image.tag"
+            value: "pull-{{ .head_sha }}"
       project: default
       destination:
         server: https://kubernetes.default.svc

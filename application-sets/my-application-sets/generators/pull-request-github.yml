@@ -15,6 +15,7 @@ spec:
         repo: gitopsatscale
         labels:
         - preview
+      requeueAfterSeconds: 30
   template:
     metadata:
       name: 'myapp-{{ .branch }}-{{ .number }}'

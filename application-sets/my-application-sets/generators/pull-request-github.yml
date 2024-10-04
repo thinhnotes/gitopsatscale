@@ -22,13 +22,9 @@ spec:
         key1: '{{ index .labels 0 }}'
     spec:
       source:
-        repoURL: 'https://github.com/myorg/myrepo.git'
+        repoURL: https://github.com/thinhnotes/gitopsatscale
         targetRevision: '{{ .head_sha }}'
-        path: helm-guestbook
-        helm:
-          parameters:
-          - name: "image.tag"
-            value: "pull-{{ .head_sha }}"
+        path: ./app-of-apps/manifests/backend
       project: default
       destination:
         server: https://kubernetes.default.svc

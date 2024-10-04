@@ -4,23 +4,17 @@ metadata:
   name: myapp
   namespace: argocd
 spec:
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
   generators:
   - pullRequest:
       github:
-        # The GitHub organization or user.
         owner: thinhnotes
-        # The Github repository
         repo: gitopsatscale
         labels:
         - preview
-      requeueAfterSeconds: 30
+      requeueAfterSeconds: 5
   template:
     metadata:
-      name: 'myapp-{{ .branch }}-{{ .number }}'
-      labels:
-        key1: '{{ index .labels 0 }}'
+      name: 'myapp-{{branch}}-{{number}}'
     spec:
       source:
         repoURL: https://github.com/thinhnotes/gitopsatscale
@@ -31,5 +25,3 @@ spec:
         server: https://kubernetes.default.svc
         namespace: "{{ .branch }}-{{ .number }}"
       syncPolicy:
-        syncOptions:
-        - CreateNamespace=true

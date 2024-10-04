@@ -46,13 +46,12 @@
             "steps": [
                 {
                     "action": "open",
-                    "path": ".demo/forwardport.txt",
-                    "command": "kubectl port-forward svc/argocd-server -n argocd 8080:443"
+                    "path": ".demo/forwardport.txt"
                 }
             ]
         },
         {
-            "title": "Get password login via web",
+            "title": "Get password of argocd  login via web",
             "description": "Get password stored on the argocd-initial-admin-secret",
             "steps": [
                 {
@@ -62,12 +61,74 @@
             ]
         },
         {
-            "title": "Stop Minikube",
-            "description": "Stop Minikube Environment",
+            "title": "Helm install dashboard",
+            "description": "Helm install dashboard",
             "steps": [
                 {
                     "action": "executeTerminalCommand",
-                    "command": "minikube stop"
+                    "command": "helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard"
+                }
+            ]
+        },
+        {
+            "title": "Helm open proxy to access dashboard",
+            "description": "Helm open proxy to access dashboard",
+            "steps": [
+                {
+                    "action": "open",
+                    "path": ".demo/forwardportdashboardk8s.txt"
+                }
+            ]
+        },
+        {
+            "title": "Generate token to access the dashboard",
+            "description": "Helm open proxy to access dashboard",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl apply -f .demo/authenticateDashboard/"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl -n kubernetes-dashboard create token admin-user"
+                }
+            ]
+        },
+        {
+            "title": "Backend Get pod,svc,deployment of backend",
+            "description": "Get pod,svc,deployment of backend",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl get pod,svc,deployment -n backend"
+                }
+            ]
+        },
+        {
+            "title": "FrontEnd Get pod,svc,deployment of FrontEnd",
+            "description": "Get pod,svc,deployment of FrontEnd",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl get pod,svc,deployment -n frontend"
+                }
+            ]
+        },
+        {
+            "title": "Manual change deployment to replications 3 ",
+            "description": "Manual change deployment to replications 3 ",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl scale -n frontend deployment frontend --replicas=5"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl scale -n backend deployment backend --replicas=5"
                 }
             ]
         }

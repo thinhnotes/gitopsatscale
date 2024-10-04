@@ -16,11 +16,6 @@ spec:
     repoURL: https://github.com/thinhnotes/gitopsatscale
     targetRevision: HEAD
     path: ./app-of-apps/manifests/backend
-   
-  # Destination cluster and namespace to deploy the application
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: backend
 
   # Sync policy
   syncPolicy:

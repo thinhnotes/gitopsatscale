@@ -5,23 +5,6 @@ metadata:
   namespace: argocd
 spec:
   generators:
-  - git:
-      repoURL: "https://github.com/thinhnotes/gitopsatscale.git"
-      revision: HEAD
-      path: "application-sets/example-apps/*"
-      template:
-        metadata:
-          name: "{{path}}/{{revision}}-{{generator.git.repoURL.split('/').slice(-1)[0]}}"
-        spec:
-          project: default
-          source:
-            repoURL: "https://github.com/thinhnotes/gitopsatscale.git"
-            # This will use the commit SHA of the pull request
-            targetRevision: "{{generator.git.revision}}"
-            path: "{{generator.git.path}}/{{path}}"
-          destination:
-            server: "https://kubernetes.default.svc"
-            namespace: "your-namespace"
   - pullRequest:
       repoURL: "https://github.com/thinhnotes/gitopsatscale.git"
       # Specify the base branch
@@ -39,3 +22,20 @@ spec:
           destination:
             server: "https://kubernetes.default.svc"
             namespace: "myapp"
+  template:
+    metadata:
+      name: 'myapp-{{ .branch }}-{{ .number }}'
+      labels:
+        key1: '{{ index .labels 0 }}'
+    spec:
+      source:
+        repoURL: https://github.com/thinhnotes/gitopsatscale
+        targetRevision: HEAD
+        path: ./app-of-apps/manifests/backend
+      project: default
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{ .branch }}-{{ .number }}"
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true

@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: pull-request-appset
+spec:
+  generators:
+  - git:
+      repoURL: "https://github.com/thinhnotes/gitopsatscale.git"
+      revision: HEAD
+      path: "application-sets/example-apps/*"
+      template:
+        metadata:
+          name: "{{path}}/{{revision}}-{{generator.git.repoURL.split('/').slice(-1)[0]}}"
+        spec:
+          project: default
+          source:
+            repoURL: "https://github.com/thinhnotes/gitopsatscale.git"
+            targetRevision: "{{generator.git.revision}}"
+            path: "{{generator.git.path}}/{{path}}"
+          destination:
+            server: "https://kubernetes.default.svc"
+            namespace: "your-namespace"

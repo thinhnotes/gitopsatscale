@@ -7,7 +7,7 @@ spec:
   generators:
   - scmProvider:
       github:
-        organization: thinhnotes
+        organization: cloudnative-netcore
   template:
     metadata:
       name: '{{ .repository }}'

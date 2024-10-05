@@ -9,6 +9,9 @@ spec:
       github:
         owner: thinhnotes
         repo: gitopsatscale
+        tokenRef:
+          secretName: repo-3369786262
+          key: password
         labels:
         - preview
       requeueAfterSeconds: 5

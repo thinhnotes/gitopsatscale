@@ -8,6 +8,9 @@ spec:
   - scmProvider:
       github:
         organization: cloudnative-netcore
+        tokenRef:
+          secretName: repo-3369786262
+          key: password
   template:
     metadata:
       name: '{{ .repository }}'

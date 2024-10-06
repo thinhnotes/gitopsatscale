@@ -9,6 +9,16 @@ spec:
       github:
         owner: thinhnotes
         repo: gitopsatscale
+        #should create the token ref because of the not autozie just request limit api to github 
+        #Error listing repos: error listing pull requests for
+        #thinhnotes/gitopsatscale: GET
+        #https://api.github.com/repos/thinhnotes/gitopsatscale/pulls?per_page=100:
+        #403 API rate limit exceeded for xx.xx.xx.x. (But here's the good news:
+        #Authenticated requests get a higher rate limit. Check out the
+        #documentation for more details.) [rate reset in 23m13s]
+        tokenRef:
+          secretName: repo-3369786262
+          key: password
         # this filter label for the PR request
         #labels:
         #- documentation

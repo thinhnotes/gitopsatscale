@@ -9,11 +9,9 @@ spec:
       github:
         owner: thinhnotes
         repo: gitopsatscale
-        labels:
-        - documentation
-        tokenRef:
-          secretName: repo-3369786262
-          key: password
+        # this filter label for the PR request
+        #labels:
+        #- documentation
       requeueAfterSeconds: 5
   template:
     metadata:

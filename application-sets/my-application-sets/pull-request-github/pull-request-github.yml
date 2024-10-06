@@ -19,10 +19,10 @@ spec:
     spec:
       source:
         repoURL: https://github.com/thinhnotes/gitopsatscale
-        targetRevision: '{{ .head_sha }}'
+        targetRevision: '{{ head_sha }}'
         path: ./app-of-apps/manifests/backend
       project: default
       destination:
         server: https://kubernetes.default.svc
-        namespace: "{{ .branch }}-{{ .number }}"
+        namespace: "{{ number }}"
       syncPolicy:

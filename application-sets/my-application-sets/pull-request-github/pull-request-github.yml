@@ -23,8 +23,8 @@ spec:
         #labels:
         #- documentation
         # Include any pull request ending with "features". (optional)
-        filters:
-        - branchMatch: "features/*"
+        #filters:
+        #- branchMatch: "features/*"
       requeueAfterSeconds: 5
   template:
     metadata:

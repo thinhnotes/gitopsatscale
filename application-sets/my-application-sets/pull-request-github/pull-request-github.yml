@@ -15,7 +15,7 @@ spec:
       requeueAfterSeconds: 5
   template:
     metadata:
-      name: 'myapp-{{branch}}{{number}}{{"Hello, world!" | strings.Slug}}'
+      name: 'myapp-{{branch_slug}}{{number}}'
     spec:
       source:
         repoURL: https://github.com/thinhnotes/gitopsatscale
@@ -24,7 +24,7 @@ spec:
       project: default
       destination:
         server: https://kubernetes.default.svc
-        namespace: "{{ number }}"
+        namespace: "{{branch_slug}}{{ number }}"
       syncPolicy:
         syncOptions:
           - CreateNamespace=true  

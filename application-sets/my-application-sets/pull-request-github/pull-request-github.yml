@@ -15,7 +15,7 @@ spec:
       requeueAfterSeconds: 5
   template:
     metadata:
-      name: 'myapp-{{ branch | strings.Abbrev 3}}-{{number}}'
+      name: 'myapp-{{ .branch | strings.Abbrev 3}}-{{number}}'
     spec:
       source:
         repoURL: https://github.com/thinhnotes/gitopsatscale

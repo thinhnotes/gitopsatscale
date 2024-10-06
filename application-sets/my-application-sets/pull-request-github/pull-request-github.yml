@@ -15,7 +15,7 @@ spec:
       requeueAfterSeconds: 5
   template:
     metadata:
-      name: 'myapp-{{ cat branch | slugify 23 }}-{{number}}'
+      name: 'myapp-{{branch | slugify 3 }}-{{number}}'
     spec:
       source:
         repoURL: https://github.com/thinhnotes/gitopsatscale

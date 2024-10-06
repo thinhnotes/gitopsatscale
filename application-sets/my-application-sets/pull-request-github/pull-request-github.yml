@@ -12,6 +12,9 @@ spec:
         # this filter label for the PR request
         #labels:
         #- documentation
+        # Include any pull request ending with "features". (optional)
+        filters:
+        - branchMatch: "features/*"
       requeueAfterSeconds: 5
   template:
     metadata:

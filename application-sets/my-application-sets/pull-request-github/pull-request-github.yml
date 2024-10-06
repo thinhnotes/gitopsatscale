@@ -15,7 +15,7 @@ spec:
       requeueAfterSeconds: 5
   template:
     metadata:
-      name: 'hellos3-{{.name}}-{{ cat .branch | slugify 23 }}'
+      name: 'myapp-{{number}}'
     spec:
       source:
         repoURL: https://github.com/thinhnotes/gitopsatscale

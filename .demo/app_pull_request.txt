@@ -1,0 +1,6 @@
+Application: manyapp
+Project Name: Default
+Sync Policy: Manual
+Repo: https://github.com/thinhnotes/gitopsatscale
+Path: ./application-sets/my-application-sets/pull-request-github
+Destination: https://kubernetes.default.svc

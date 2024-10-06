@@ -12,8 +12,6 @@ spec:
         tokenRef:
           secretName: repo-3369786262
           key: password
-        labels:
-        - preview
       requeueAfterSeconds: 5
   template:
     metadata:

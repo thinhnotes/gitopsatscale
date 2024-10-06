@@ -9,6 +9,8 @@ spec:
       github:
         owner: thinhnotes
         repo: gitopsatscale
+        labels:
+        - documentation
         tokenRef:
           secretName: repo-3369786262
           key: password

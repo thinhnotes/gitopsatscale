@@ -17,8 +17,8 @@ spec:
         #Authenticated requests get a higher rate limit. Check out the
         #documentation for more details.) [rate reset in 23m13s]
         tokenRef:
-          secretName: repo-3369786262
-          key: password
+          secretName: github-token
+          key: token
         # this filter label for the PR request
         #labels:
         #- documentation

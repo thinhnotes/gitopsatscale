@@ -1,0 +1,63 @@
+{
+    "title": "ArgoCD with app of app",
+    "description": "Install app on the ArgoCD and check the environment",
+    "demos": [
+        {
+            "title": "Create new app on the web UI of ArgoCD",
+            "description": "Create new app on the web UI of ArgoCD",
+            "steps": [
+                {
+                    "action": "open",
+                    "path": ".demo/app1.txt"
+                },
+                {
+                    "action": "open",
+                    "path": "app-of-apps/my-app-list/my-app/backend.yml"
+                },
+                {
+                    "action": "open",
+                    "path": "app-of-apps/my-app-list/my-app/frontend.yml"
+                },
+                {
+                    "action": "highlight",
+                    "path": "app-of-apps/my-app-list/my-app/frontend.yml",
+                    "position": "18"
+                }
+            ]
+        },
+        {
+            "title": "Backend Get pod,svc,deployment of backend",
+            "description": "Get pod,svc,deployment of backend",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl get pod,svc,deployment -n backend"
+                }
+            ]
+        },
+        {
+            "title": "FrontEnd Get pod,svc,deployment of FrontEnd",
+            "description": "Get pod,svc,deployment of FrontEnd",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl get pod,svc,deployment -n frontend"
+                }
+            ]
+        },
+        {
+            "title": "Manual change deployment to replications 3 ",
+            "description": "Manual change deployment to replications 3 ",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl scale -n frontend deployment frontend --replicas=5"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl scale -n backend deployment backend --replicas=5"
+                }
+            ]
+        }
+    ]
+}

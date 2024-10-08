@@ -1,0 +1,55 @@
+{
+    "title": "ArgoCD with generator github applicaiton set",
+    "description": "ArgoCD with generator github applicaiton set",
+    "demos": [
+        {
+            "title": "Create new app on the web UI of ArgoCD",
+            "description": "Create new app on the web UI of ArgoCD",
+            "steps": [
+                {
+                    "action": "open",
+                    "path": ".demo/app2.txt"
+                },
+                {
+                    "action": "highlight",
+                    "path": "./application-sets/my-application-sets/pull-request-github/pull-request-github.yml",
+                    "position": "8:27"
+                }
+            ]
+        },
+        {
+            "title": "Backend Get pod,svc,deployment of backend",
+            "description": "Get pod,svc,deployment of backend",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl get pod,svc,deployment -n backend"
+                }
+            ]
+        },
+        {
+            "title": "FrontEnd Get pod,svc,deployment of FrontEnd",
+            "description": "Get pod,svc,deployment of FrontEnd",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl get pod,svc,deployment -n frontend"
+                }
+            ]
+        },
+        {
+            "title": "Manual change deployment to replications 3 ",
+            "description": "Manual change deployment to replications 3 ",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl scale -n frontend deployment frontend --replicas=5"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl scale -n backend deployment backend --replicas=5"
+                }
+            ]
+        }
+    ]
+}

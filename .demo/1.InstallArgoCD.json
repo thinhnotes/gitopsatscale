@@ -97,40 +97,6 @@
                     "command": "kubectl -n kubernetes-dashboard create token admin-user"
                 }
             ]
-        },
-        {
-            "title": "Backend Get pod,svc,deployment of backend",
-            "description": "Get pod,svc,deployment of backend",
-            "steps": [
-                {
-                    "action": "executeTerminalCommand",
-                    "command": "kubectl get pod,svc,deployment -n backend"
-                }
-            ]
-        },
-        {
-            "title": "FrontEnd Get pod,svc,deployment of FrontEnd",
-            "description": "Get pod,svc,deployment of FrontEnd",
-            "steps": [
-                {
-                    "action": "executeTerminalCommand",
-                    "command": "kubectl get pod,svc,deployment -n frontend"
-                }
-            ]
-        },
-        {
-            "title": "Manual change deployment to replications 3 ",
-            "description": "Manual change deployment to replications 3 ",
-            "steps": [
-                {
-                    "action": "executeTerminalCommand",
-                    "command": "kubectl scale -n frontend deployment frontend --replicas=5"
-                },
-                {
-                    "action": "executeTerminalCommand",
-                    "command": "kubectl scale -n backend deployment backend --replicas=5"
-                }
-            ]
         }
     ]
 }

@@ -13,12 +13,12 @@
             ]
         },
         {
-            "title": "Create Minikube",
+            "title": "Create Minikube with profile 1",
             "description": "Create Minikube Environment",
             "steps": [
                 {
                     "action": "executeTerminalCommand",
-                    "command": "minikube start"
+                    "command": "minikube start -p cluster-1"
                 }
             ]
         },

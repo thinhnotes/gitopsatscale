@@ -1,0 +1,86 @@
+{
+    "title": "ArgoCD Join Cluster",
+    "description": "ArgoCD Join Cluster",
+    "demos": [
+        {
+            "title": "Get password of argocd login",
+            "description": "Get password stored on the argocd-initial-admin-secret",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl get secrets/argocd-initial-admin-secret -n argocd --template={{.data.password}} | base64 -d"
+                }
+            ]
+        },
+        {
+            "title": "Login to ArgoCD CLI",
+            "description": "Login to ArgoCD CLI",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "argocd login --insecure  localhost:8080"
+                }
+            ]
+        },
+        {
+            "title": "Check current cluster list on argocd",
+            "description": "Check current cluster list on argocd",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "argocd cluster list"
+                }
+            ]
+        },
+        {
+            "title": "Create Minikube new cluster with profile 3",
+            "description": "Create Minikube Environment new cluster",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "minikube start -p cluster-3"
+                }
+            ]
+        },
+        {
+            "title": "Check cluster profile more than 1",
+            "description": "Check cluster profile more than 1",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl config get-contexts"
+                }
+            ]
+        },
+        {
+            "title": "Add new cluster ArgoCD CLI",
+            "description": "Add new cluster ArgoCD CLI",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "argocd cluster add cluster-3"
+                }
+            ]
+        },
+        {
+            "title": "Check current cluster list on argocd",
+            "description": "Check current cluster list on argocd",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "argocd cluster list"
+                }
+            ]
+        },
+        {
+            "title": "Switch to Minikube cluster 1",
+            "description": "Switch to Minikube cluster 1",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "minikube profile cluster-1"
+                }
+            ]
+        }
+    ]
+}

@@ -23,6 +23,46 @@
             ]
         },
         {
+            "title": "Alias docker and kubectl command",
+            "description": "Alias docker and kubectl command",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "echo 'alias k=kubectl' >>~/.bashrc"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "echo 'alias dk=docker' >>~/.bashrc"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": ". ~/.bashrc"
+                }
+            ]
+        },
+        {
+            "title": "Install ArgoCd CLI",
+            "description": "Install ArgoCd CLI",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "rm argocd-linux-amd64"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "argocd version"
+                }
+            ]
+        },
+        {
             "title": "Install Argo CD",
             "description": "Install Argo CD to Environment",
             "steps": [

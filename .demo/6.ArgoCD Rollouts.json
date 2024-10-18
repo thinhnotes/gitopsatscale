@@ -1,0 +1,42 @@
+{
+    "title": "ArgoCD Rollouts ",
+    "description": "ArgoCD Rollouts",
+    "demos": [
+        {
+            "title": "Install Arcd Rollout",
+            "description": "Install Arcd Rollout",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl create namespace argo-rollouts"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml"
+                }
+            ]
+        },
+        {
+            "title": "Install Argo Rollouts Kubectl plugin with curl",
+            "description": "Install Argo Rollouts Kubectl plugin with curl",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "curl -LO https://github.com/argoproj/argo-rollouts/releases/latest/download/kubectl-argo-rollouts-darwin-amd64"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "chmod +x ./kubectl-argo-rollouts-darwin-amd64"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "sudo mv ./kubectl-argo-rollouts-darwin-amd64 /usr/local/bin/kubectl-argo-rollouts"
+                },
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "kubectl argo rollouts version"
+                }
+            ]
+        }
+    ]
+}

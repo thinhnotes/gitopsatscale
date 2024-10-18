@@ -8,7 +8,8 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"eliostruyf.vscode-demo-time"
+				"eliostruyf.vscode-demo-time",
+				"supermaven.supermaven"
 			]
 		}
 	}

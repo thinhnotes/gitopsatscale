@@ -54,11 +54,11 @@
                 },
                 {
                     "action": "executeTerminalCommand",
-                    "command": "rm argocd-linux-amd64"
+                    "command": "argocd version"
                 },
                 {
                     "action": "executeTerminalCommand",
-                    "command": "argocd version"
+                    "command": "rm argocd-linux-amd64"
                 }
             ]
         },

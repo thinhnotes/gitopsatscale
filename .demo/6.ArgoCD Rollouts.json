@@ -39,6 +39,26 @@
             ]
         },
         {
+            "title": "Apply enable ingress for minikube",
+            "description": "Apply enable ingress for minikube",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "minikube addons enable ingress --profile cluster-1"
+                }
+            ]
+        },
+        {
+            "title": "Get IP load balancer of minikube",
+            "description": "Get IP load balancer of minikube",
+            "steps": [
+                {
+                    "action": "executeTerminalCommand",
+                    "command": "minikube ip --profile cluster-1"
+                }
+            ]
+        },
+        {
             "title": "Alias kubectl command to kr",
             "description": "Alias kubectl command to kr",
             "steps": [

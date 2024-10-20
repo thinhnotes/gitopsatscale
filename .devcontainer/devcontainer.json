@@ -3,13 +3,15 @@
 	"features": {
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
-		"ghcr.io/devcontainers/features/powershell:1": {}
+		"ghcr.io/devcontainers/features/powershell:1": {},
+		"ghcr.io/cirolosapio/devcontainers-features/alpine-ohmyzsh:0": {}
 	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
 				"eliostruyf.vscode-demo-time",
-				"supermaven.supermaven"
+				"supermaven.supermaven",
+				"ritwickdey.LiveServer"
 			]
 		}
 	}

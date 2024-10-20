@@ -18,7 +18,7 @@
             "steps": [
                 {
                     "action": "executeTerminalCommand",
-                    "command": "minikube start -p cluster-1"
+                    "command": "minikube start -p cluster-1 --memory 12240 --cpus 3"
                 }
             ]
         },
@@ -46,7 +46,7 @@
             "steps": [
                 {
                     "action": "executeTerminalCommand",
-                    "command": "curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64"
+                    "command": "curl -sSL -L -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64"
                 },
                 {
                     "action": "executeTerminalCommand",
